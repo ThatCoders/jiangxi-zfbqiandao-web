@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>其它功能</title>
+</head>
+<body>
+<div style="text-align: center;align-items: center;">
+	<h2>其它功能还没写,在新建文件夹</h2>
+	<p>PS:别看了,下面的代码雨全是上面这句话</p>
+</div>
+<canvas id="myCanvas"></canvas>
+
+
+</body>
+<style type="text/css">
+
+</style>
+<script>
+	const width = document.getElementById("myCanvas").width = screen.availWidth;
+	const height = document.getElementById("myCanvas").height = screen.availHeight;
+	const ctx = document.getElementById("myCanvas").getContext("2d");
+	const arr = Array(Math.ceil(width / 10)).fill(0);
+	const str = "其它功能还没写新建文件夹中".split("");
+
+	function rain() {
+		ctx.fillStyle = "rgba(0,0,0,0.05)";
+		ctx.fillRect(0, 0, width, height);
+		ctx.fillStyle = "#0f0";
+		arr.forEach(function (value, index) {
+			ctx.fillText(str[Math.floor(Math.random() * str.length)], index * 10, value + 10);
+			arr[index] = value >= height || value > 8888 * Math.random() ? 0 : value + 10;
+		});
+	}
+
+	setInterval(rain, 30);
+</script>
+</html>
